@@ -9,20 +9,22 @@
 			width: 16rem;
 		}
 	}
-	&-menu-wrapper {
-		color: var(--color-text);
-		position: relative;
-		padding: 1.5rem 0;
-		z-index: 2;
-		box-shadow: 2px 0px 3px rgba(0, 0, 0, 0.2);
+	&-menu{
+		&-wrapper {
+			color: var(--color-text);
+			position: relative;
+			padding: 1.5rem 0;
+			z-index: 2;
+			box-shadow: 2px 0px 3px rgba(0, 0, 0, 0.2);
 
-		.container {
-			display: flex;
-			justify-content: space-between;
-			align-items: flex-end;
+			.container {
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-end;
 
-			@include media("<=tablet") {
-				align-items: center;
+				@include media("<=tablet") {
+					align-items: center;
+				}
 			}
 		}
 	}
