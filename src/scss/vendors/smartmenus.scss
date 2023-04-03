@@ -1,10 +1,7 @@
-// variable - needed for color control on menu
-$bg-for-header-menu: #f9f9f9;
-
 .nav-opener {
 	display: none;
-	width: 30px;
-	height: 30px;
+	width: 3rem;
+	height: 3rem;
 	position: relative;
 	background-color: transparent;
 	outline: none;
@@ -17,14 +14,14 @@ $bg-for-header-menu: #f9f9f9;
 	&:before,
 	&:after,
 	span {
-		background-color: var(--base-text-color);
+		background-color: var(--color-text);
 		border-radius: 3px;
 		position: absolute;
 		top: 50%;
 		left: 0;
 		right: 0;
-		height: 3px;
-		margin-top: -1.5px;
+		height: 0.3rem;
+		margin-top: -0.15rem;
 		transition: all 0.2s linear;
 	}
 
@@ -47,6 +44,7 @@ $bg-for-header-menu: #f9f9f9;
 	transition: all 0.25s linear;
 
 	@include media("<desktop") {
+		background-color: var(--color-background);
 		position: absolute;
 		top: 100%;
 		left: 0;
@@ -93,7 +91,7 @@ $bg-for-header-menu: #f9f9f9;
 
 	@include media("<desktop") {
 		transform: translateY(-100%);
-		padding: 10px 0;
+		padding: var(--gutter) 0;
 		box-shadow: 2px 0px 3px rgba(0, 0, 0, 0.2);
 	}
 
@@ -121,11 +119,13 @@ $bg-for-header-menu: #f9f9f9;
 		> ul {
 			position: absolute;
 			display: none;
-			background-color: $bg-for-header-menu;
 			box-shadow: 0 0 3px 0 rgba(0, 0, 0, .2);
+			background-color: var(--color-background);
 
 			@include media("<desktop") {
 				box-shadow: none;
+				background-color: rgba(var(--color-black--rgb), 0.1);
+				padding: 0 var(--gutter);
 			}
 
 			@include media("<desktop") {
@@ -138,7 +138,7 @@ $bg-for-header-menu: #f9f9f9;
 
 			.sub-arrow {
 				border-style: dashed dashed dashed solid;
-				border-color: transparent transparent transparent var(--base-text-color);
+				border-color: transparent transparent transparent var(--color-text);
 			}
 		}
 
@@ -151,12 +151,16 @@ $bg-for-header-menu: #f9f9f9;
 	a {
 		display: block;
 		position: relative;
-		padding: 10px 15px;
+		padding: 1.5rem var(--gutter);
 		color: inherit;
+
+		@include media(">=desktop") {
+			padding: 1rem 1.5rem;
+		}
 
 		&:hover,
 		&.highlighted {
-			background-color: darken($bg-for-header-menu, 5%);
+			background-color: rgba(var(--color-black--rgb), 0.2);
 		}
 
 		&.highlighted {
@@ -170,7 +174,10 @@ $bg-for-header-menu: #f9f9f9;
 		}
 
 		&.has-submenu {
-			padding-right: 25px;
+			padding-right: var(--gutter);
+			@include media("<desktop") {
+				padding-right: calc(var(--gutter) + 3rem);
+			}
 		}
 
 		.sub-arrow {
@@ -183,14 +190,14 @@ $bg-for-header-menu: #f9f9f9;
 			border-width: 5px;
 			transform: translateY(-50%);
 			border-style: solid dashed dashed dashed;
-			border-color: var(--base-text-color) transparent transparent transparent;
+			border-color: var(--color-text) transparent transparent transparent;
 
 			@include media("<desktop") {
-				width: 25px;
-				height: 25px;
-				right: 15px;
+				width: 2.5rem;
+				height: 2.5rem;
+				right: var(--gutter);
 				border: 0;
-				background-color: darken($bg-for-header-menu, 30%);
+				background-color: var(--color-text);
 				border-radius: 4px;
 				display: flex;
 				justify-content: center;
@@ -201,7 +208,7 @@ $bg-for-header-menu: #f9f9f9;
 			&:before {
 				@include media("<desktop") {
 					content: "+";
-					color: #fff;
+					color: var(--color-white);
 				}
 			}
 		}

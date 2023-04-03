@@ -6,27 +6,31 @@ html {
 	padding: constant(safe-area-inset); //iOS 11
 	padding: env(safe-area-inset); //iOS 11.2+
 
-	@include media("<=desktop") {
+	@include media("<=desktop-md") {
 		font-size: calc(var(--rem-base) - 1.5px);
 	}
 
-	@include media("<=tablet") {
+	@include media("<=desktop") {
 		font-size: calc(var(--rem-base) - 2px);
 	}
 
-	@include media("<=phone") {
+	@include media("<=tablet") {
 		font-size: calc(var(--rem-base) - 2.5px);
+	}
+
+	@include media("<=phone") {
+		font-size: calc(var(--rem-base) - 3px);
 	}
 
 	@include media("<=phone-xs") {
 		overflow-x: hidden;
-		font-size: calc(var(--rem-base) - 3px);
+		font-size: calc(var(--rem-base) - 3.5px);
 	}
 }
 
 //-------------------- #body
 body {
-	color: var(--base-text-color);
+	color: var(--color-text);
 	font: var(--base-font-size)/var(--base-line-height) $base-font;
 	min-width: 320px;
 	-webkit-font-smoothing: antialiased;
@@ -138,7 +142,7 @@ ol.list-style {
 	--line-height-li: var(--base-line-height, 1.2);
 	$margin-li-top: 10px;
 	margin: 0 0 1.2em 0;
-	color: var(--base-text-color);
+	color: var(--color-text);
 
 	li {
 		line-height: var(--line-height-li);
@@ -212,10 +216,10 @@ table {
 
 	th {
 		font-size: var(--base-font-size);
-		color: var(--base-text-color);
+		color: var(--color-text);
 		padding: 10px 15px;
 		text-align: left;
-		border-bottom: 1px solid #979797;
+		border-bottom: 1px solid var(--color-border);
 
 		@include media("<=phone") {
 			padding: 10px 5px;
@@ -228,9 +232,9 @@ table {
 
 	td {
 		font-size: var(--base-font-size);
-		color: var(--base-text-color);
+		color: var(--color-text);
 		padding: 10px 15px;
-		border-bottom: 1px solid #979797;
+		border-bottom: 1px solid var(--color-border);
 
 		@include media("<=phone") {
 			padding: 7px 5px;
@@ -252,9 +256,9 @@ pre {
 //------------------- #blockquote
 blockquote {
 	font-size: 25px;
-	color: var(--base-text-color);
+	color: var(--color-text);
 	background: transparent;
-	border-left: 6px solid #ECECEC;
+	border-left: 6px solid var(--color-border);
 	padding: 5px 0 5px 28px;
 	margin: 0 0 1.2em;
 }

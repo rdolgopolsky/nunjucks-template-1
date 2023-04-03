@@ -1,5 +1,5 @@
-var $ = jQuery.noConflict();
-jQuery(function() {
+let $ = jQuery.noConflict();
+$(function() {
 	isElementExist(".nav-drop", initSmartMenu);
 	jcfInit();
 });
@@ -10,7 +10,7 @@ jQuery(function() {
 
 // Helper if element exist then call function
 function isElementExist(_el, _cb) {
-	var elem = document.querySelector(_el);
+	const elem = document.querySelector(_el);
 
 	if (document.body.contains(elem)) {
 		try {
@@ -23,9 +23,9 @@ function isElementExist(_el, _cb) {
 
 // initialize custom form elements (checkbox, radio, select) https://github.com/w3co/jcf
 function jcfInit() {
-	var customSelect = jQuery('select');
-	var customCheckbox = jQuery('input[type="checkbox"]');
-	var customRadio = jQuery('input[type="radio"]');
+	const customSelect = $('select');
+	const customCheckbox = $('input[type="checkbox"]');
+	const customRadio = $('input[type="radio"]');
 
 	// all option see https://github.com/w3co/jcf
 	jcf.setOptions('Select', {
@@ -48,23 +48,29 @@ function jcfInit() {
 
 // smart menu init
 function initSmartMenu() {
-	var distanceBetweenMenuAndNav = jQuery(".header-menu-wrapper").offset().top + jQuery(".header-menu-wrapper").innerHeight() - jQuery(".nav").offset().top - jQuery(".nav").innerHeight();
-	jQuery(".header-menu").smartmenus({
+	const headerMenu  = $(".page-header-menu");
+	const headerMenuWrapper = $(".page-header-menu-wrapper");
+	const nav = $(".nav");
+	const body = $("body");
+
+	const distanceBetweenMenuAndNav = headerMenuWrapper.offset().top + headerMenuWrapper.innerHeight() - nav.offset().top - nav.innerHeight();
+
+	headerMenu.smartmenus({
 		collapsibleBehavior: "accordion",
 		mainMenuSubOffsetY: distanceBetweenMenuAndNav
 	});
 
 	// changed date attribute to a class (need to reverse last item menu)
-	jQuery('.header-menu').children().last().addClass('nav-sm-reverse');
+	headerMenu.children().last().addClass('nav-sm-reverse');
 
-	jQuery("body").mobileNav({
+	body.mobileNav({
 		menuActiveClass: "nav-active",
 		menuOpener: ".nav-opener",
 		hideOnClickOutside: true,
 		menuDrop: ".nav-drop"
 	}), "ontouchstart" in document.documentElement ||
-			jQuery(window).on("resize orientationchange", function() {
-				jQuery("body").removeClass("nav-active"), $.SmartMenus.hideAll();
+	$(window).on("resize orientationchange", function() {
+		body.removeClass("nav-active"), $.SmartMenus.hideAll();
 	});
 }
 

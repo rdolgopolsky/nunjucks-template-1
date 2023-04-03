@@ -1,6 +1,7 @@
 //----- main style for project
 @import "base/variables";
 @import "base/fonts";
+@import "base/helpers";
 @import "vendors/include-media";
 @import "vendors/normalize";
 @import "base/mixins";
@@ -13,3 +14,7 @@
 @import "vendors/smartmenus";
 // If the project is on wp
 @import "base/wp-reset";
+
+.container{
+
+}

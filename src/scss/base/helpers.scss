@@ -1,0 +1,121 @@
+@import "../vendors/include-media";
+
+$sides: (top, bottom, left, right);
+
+@for $i from 0 through 50 {
+	@each $side in $sides {
+		.m#{str-slice($side, 0, 1)}-#{$i} {
+			margin-#{$side}: #{$i}rem !important;
+		}
+		.p#{str-slice($side, 0, 1)}-#{$i} {
+			padding-#{$side}: #{$i}rem !important;
+		}
+		.-m#{str-slice($side, 0, 1)}-#{$i} {
+			margin-#{$side}: -#{$i}rem !important;
+		}
+
+		.md\: {
+			@include media(">=tablet") {
+				&-m#{str-slice($side, 0, 1)}-#{$i} {
+					margin-#{$side}: -#{$i}rem !important;
+				}
+				&p#{str-slice($side, 0, 1)}-#{$i} {
+					padding-#{$side}: #{$i}rem !important;
+				}
+				&m#{str-slice($side, 0, 1)}-#{$i} {
+					margin-#{$side}: #{$i}rem !important;
+				}
+			}
+		}
+
+		.lg\: {
+			@include media(">=desktop") {
+				&-m#{str-slice($side, 0, 1)}-#{$i} {
+					margin-#{$side}: -#{$i}rem !important;
+				}
+
+				&p#{str-slice($side, 0, 1)}-#{$i} {
+					padding-#{$side}: #{$i}rem !important;
+				}
+
+				&m#{str-slice($side, 0, 1)}-#{$i} {
+					margin-#{$side}: #{$i}rem !important;
+				}
+			}
+		}
+
+		.xl\: {
+			@include media(">=desktop-md") {
+				&-m#{str-slice($side, 0, 1)}-#{$i} {
+					margin-#{$side}: -#{$i}rem !important;
+				}
+
+				&p#{str-slice($side, 0, 1)}-#{$i} {
+					padding-#{$side}: #{$i}rem !important;
+				}
+
+				&m#{str-slice($side, 0, 1)}-#{$i} {
+					margin-#{$side}: #{$i}rem !important;
+				}
+			}
+		}
+	}
+
+	.py-#{$i} {
+		padding-top: #{$i}rem !important;
+		padding-bottom: #{$i}rem !important;
+	}
+
+	.px-#{$i} {
+		padding-left: #{$i}rem !important;
+		padding-right: #{$i}rem !important;
+	}
+
+	.md\: {
+		@include media(">=tablet") {
+			&px-#{$i} {
+				padding-left: #{$i}rem !important;
+				padding-right: #{$i}rem !important;
+			}
+
+			&py-#{$i} {
+				padding-top: #{$i}rem !important;
+				padding-bottom: #{$i}rem !important;
+			}
+		}
+	}
+
+	.xl\: {
+		@include media(">=desktop-md") {
+			&px-#{$i} {
+				padding-left: #{$i}rem !important;
+				padding-right: #{$i}rem !important;
+			}
+
+			&py-#{$i} {
+				padding-top: #{$i}rem !important;
+				padding-bottom: #{$i}rem !important;
+			}
+		}
+	}
+
+	.lg\: {
+		@include media(">=desktop") {
+			&px-#{$i} {
+				padding-left: #{$i}rem !important;
+				padding-right: #{$i}rem !important;
+			}
+
+			&py-#{$i} {
+				padding-top: #{$i}rem !important;
+				padding-bottom: #{$i}rem !important;
+			}
+		}
+	}
+}
+
+@for $i from 1 through 3 {
+	ul li:nth-child(3n + #{$i}) {
+
+	}
+}

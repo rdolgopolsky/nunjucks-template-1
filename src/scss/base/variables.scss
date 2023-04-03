@@ -16,7 +16,7 @@ $breakpoints: (
 // keywords
 $media-expressions: (
 	"iphoneX":
-		"(min-width: 812px) and (max-height: 414px) and (orientation: landscape)",
+	"(min-width: 812px) and (max-height: 414px) and (orientation: landscape)",
 	"screen": "screen",
 	"print": "print",
 	"handheld": "handheld",
@@ -42,14 +42,14 @@ $accent-font: $base-font;
 // name use for media query `<${name}`. See `$breakpoints` variable for a possible key.
 $h1-h6-font-size: (
 	// --------- h1 ---- h2 ----h3 ---- h4 -- h5 -- h6 ---
-	"default": (3.5rem, 2.8rem, 2.2rem, 2rem, 17px, 16px),
-	"tablet": (25px, 23px, 20px, 18px, 17px, 16px)
+	"default": (4rem, 3.5rem, 3rem, 2.5rem, 2rem, 16px),
+	/*"tablet": (4rem, 3.5rem, 3rem, 2.5rem, 2rem, 16px)*/
 );
 
 // Container
-$gutter: 20px;
+$gutter: 3rem;
 $container: (
-	"default": 1180px,
+	"default": 1240px,
 	// "lg": 1400px
 );
 
@@ -64,16 +64,16 @@ $container: (
 $btnsSize: (
 	"default": (
 		"default": (
-			"y": 10px,
-			"x": 20px,
+			"y": 1rem,
+			"x": 2rem,
 			"b": 1px,
 			"r": 3px,
-			"fz": 13px
+			"fz": 16px
 		),
 		// if need other size button
 		// 'lg': ('y': 18px, 'x': 35px, 'b': 3px, 'r': 0, 'fz': 22px)
 	),
-	"phone": (
+	/*"phone": (
 		"default": (
 			"y": 1rem,
 			"x": 2rem,
@@ -81,31 +81,76 @@ $btnsSize: (
 			"r": 3px,
 			"fz": 13px
 		)
-	)
+	)*/
 );
 // Input padding left and right
 $input-padding-x: map-get(
-	map-get(map-get($btnsSize, "default"), "default"),
-	"x"
+		map-get(map-get($btnsSize, "default"), "default"),
+		"x"
 );
 
 // Form elements styling
-$input-color: #4b4a4a;
-$input-placeholder-color: lighten($input-color, 20%);
-$input-bg-color: white;
+$input-color: var(--color-text);
+$input-placeholder-color: var(--color-caption);
+$input-bg-color: var(--color-white);
 $input-radius: 3px;
-$input-border-color: #eee;
-$input-focus-border-color: darken($input-border-color, 13%);
+$input-border-color: var(--color-border);
+$input-focus-border-color: var(--color-brand);
 
 $form-theme-color: $brand-color; // checkbox, radio, datepicker theme color
 $checkbox-size: 18px;
 $radio-size: $checkbox-size;
 
 $label-fz: 13px;
-$label-color: $input-color;
+$label-color: var(--color-caption);
 
 $error-color: #e04562;
 $error-bg-color: lighten($error-color, 35%);
 
 $form-col-gutter: 15px;
 $form-row-margin: $form-col-gutter * 1.5;
+
+$colors: (
+	"white": #ffffff,
+	"black": #161613,
+	"brand": $brand-color,
+	"brand-dark": darken($brand-color, 10%),
+	"brand-light": lighten($brand-color, 10%),
+	"accent": $accent-color,
+	"accent-dark": darken($accent-color, 10%),
+	"accent-light": lighten($accent-color, 10%),
+	"text": #161613,
+	"text-secondary": #646464,
+	"caption": #b0aeae,
+	"border": #dddddd,
+	"background": #F8F8F7,
+	"error": $error-color,
+
+	"dark": #07101F,
+	"gray": #F8F8F7,
+	"pink": #FBD1D7,
+	"magenta": #CC3F5F,
+	"light-pink": #FFF5F6,
+	"light-pink-review": #FCEEEE,
+	"copywriter": #00AB5A,
+	"yellow": #EDBA2B,
+	"yellow-secondary": #FFAC30,
+	"yellow-light-review": #FAF2E5,
+	"orange": #F59563,
+	"orange-secondary": #F37678,
+	"green": #8BD2D4,
+	"success": #098080,
+	"warning":#D39F0B,
+);
+
+@function HexToRGB($hex) {
+	@return red($hex), green($hex), blue($hex);
+}
+
+@function cl($name, $opacity: false) {
+	@if $opacity {
+		@return rgba(var(--color-#{unquote($name)}--rgb), $opacity);
+	} @else {
+		@return var(--color-#{unquote($name)});
+	}
+}
