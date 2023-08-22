@@ -11,16 +11,20 @@
 	--base-line-height: 1.2;
 	--vertical-rhythm: calc(var(--base-line-height) * 1em);
 
-	--h1-h6-color: var(--color-text);
+	// --- Colors
+	--brand-color: #{$brand-color};
+	--brand-color-dark: #{darken($brand-color, 15%)};
+	--brand-color-light: #{lighten($brand-color, 15%)};
+
+	--accent-color: #{$accent-color};
+	--accent-color-dark: #{darken($accent-color, 15%)};
+	--accent-color-light: #{darken($accent-color, 15%)};
+
+	--base-text-color: #333333;
+	--base-link-color: var(--brand-color);
+	--h1-h6-color: var(--base-text-color);
 	// --secondary-color
 	// --add-color (additional)
-
-	@if $colors {
-		@each $key, $value in $colors {
-			--color-#{$key}: #{$value};
-			--color-#{$key}--rgb: #{HexToRGB($value)};
-		}
-	}
 
 	// --- Animation
 	--animation-duration: 0.3s;

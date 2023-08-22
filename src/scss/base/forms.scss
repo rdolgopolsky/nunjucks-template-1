@@ -6,7 +6,7 @@ fieldset {
 	display: block;
 	padding: 0;
 	margin: 0 0 var(--vertical-rhythm) 0;
-	color: var(--color-text);
+	color: var(--base-text-color);
 }
 
 label {
@@ -89,13 +89,6 @@ input[type='reset'],
 input[type='submit'],
 button[type='submit'] {
 	// $btn-padding-y | $btn-padding-x | $btn-font-size | $btn-radius | $btn-border-width | $btn-line-height
-	border-style: solid;
-	-webkit-appearance: none;
-	cursor: pointer;
-	text-align: center;
-	font-weight: bold;
-	transition: all 0.3s;
-
 	@include button-size(
 		var(--btn-y) var(--input-x),
 		var(--btn-fz),
@@ -105,16 +98,18 @@ button[type='submit'] {
 	);
 	//color button mixin $background | $color | $border | $hover-background | $hover-color | $hover-border
 	@include button-variant(
-		var(--color-accent),
-		var(--color-white),
-		var(--color-accent),
+		--accent-color,
+		#fff,
+		--accent-color,
 		transparent,
-		var(--color-text)
+		var(--base-text-color)
 	);
-
-	&:hover {
-		text-decoration: none;
-	}
+	border-style: solid;
+	-webkit-appearance: none;
+	cursor: pointer;
+	text-align: center;
+	font-weight: bold;
+	transition: all 0.3s;
 }
 
 input[type="reset"] {
@@ -148,7 +143,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .forminator-error,
 .forminator-error-message,
 .forminator-required {
-	color: var(--color-error);
+	color: var(--error-color);
 }
 
 .forminator-description {
@@ -332,8 +327,8 @@ input[type="search"]::-webkit-search-cancel-button {
 			}
 
 			&.jcf-label-active {
-				color: var(--color-white);
-				background-color: var(--color-brand);
+				color: white;
+				background-color: var(--brand-color);
 			}
 		}
 
@@ -375,7 +370,7 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .forminator-calendar {
-	border: 1px solid var(--color-border);
+	border: 1px solid var(--form-theme-color);
 	border-radius: var(--input-radius);
 	background-color: #fbfbfb;
 	overflow: hidden;
@@ -393,7 +388,7 @@ input[type="search"]::-webkit-search-cancel-button {
 			position: relative;
 			width: 28px;
 			height: 28px;
-			background-color: var(--color-border);
+			background-color: var(--form-theme-color);
 			border-radius: var(--input-radius);
 			cursor: pointer;
 
@@ -448,7 +443,7 @@ input[type="search"]::-webkit-search-cancel-button {
 			appearance: none;
 			display: block;
 			color: var(--input-color);
-			border: 1px solid var(--color-border);
+			border: 1px solid var(--form-theme-color);
 			border-radius: var(--input-radius);
 			flex: 1;
 			font-size: 13px;
@@ -463,11 +458,11 @@ input[type="search"]::-webkit-search-cancel-button {
 			margin-bottom: 0;
 
 			thead {
-				background-color: var(--color-caption);
+				background-color: #f8f8f8;
 			}
 
 			tbody {
-				background-color: var(--color-border);
+				background-color: #fdfdfd;
 
 				tr {
 					&:first-child {
@@ -515,21 +510,21 @@ input[type="search"]::-webkit-search-cancel-button {
 				justify-content: center;
 				width: 28px;
 				height: 28px;
-				background-color: var(--color-caption);
-				border: 1px solid var(--color-border);
-				color: var(--color-text-secondary);
+				background-color: #e6e6e6;
+				border: 1px solid #e6e6e6;
+				color: #777;
 				padding: 2px;
 				border-radius: var(--input-radius);
 
 				&.ui-state-active {
-					color: var(--color-white);
-					background-color: var(--color-border);
-					border-color: var(--color-border);
+					color: white;
+					background-color: var(--form-theme-color);
+					border-color: var(--form-theme-color);
 				}
 
 				&.ui-state-highlight {
-					border-color: var(--color-border);
-					color: var(--color-border);
+					border-color: var(--form-theme-color);
+					color: var(--form-theme-color);
 				}
 			}
 		}
@@ -596,7 +591,7 @@ input[type="search"]::-webkit-search-cancel-button {
 				.forminator-icon-close {
 					display: inline-block;
 					vertical-align: top;
-					color: var(--color-white);
+					color: white;
 					// background-color: #000;
 					// border: 1px solid #000;
 
@@ -642,7 +637,7 @@ input[type="search"]::-webkit-search-cancel-button {
 	top: 50%;
 	left: 50%;
 	margin: -4px 0 0 -5px;
-	border: 3px solid var(--color-white);
+	border: 3px solid white;
 	border-width: 0 0 3px 3px;
 	transform: rotate(-45deg);
 }
@@ -658,8 +653,8 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .jcf-checkbox.jcf-checked{
-	border-color: var(--color-border);
-	background-color: var(--color-border);
+	border-color: var(--form-theme-color);
+	background-color: var(--form-theme-color);
 
 	span {
 		display: block;
@@ -674,7 +669,7 @@ input[type="search"]::-webkit-search-cancel-button {
 	position: relative;
 	overflow: hidden;
 	cursor: default;
-	background: var(--color-white);
+	background: #fff;
 	border: 1px solid var(--input-border-color);
 	border-radius: 50%;
 	margin: 0 0.5em 0 0;
@@ -690,7 +685,7 @@ input[type="search"]::-webkit-search-cancel-button {
 	left: 3px;
 	right: 3px;
 	bottom: 3px;
-	background: var(--color-border);
+	background: var(--form-theme-color);
 	border-radius: 100%;
 }
 
@@ -715,7 +710,7 @@ input[type="search"]::-webkit-search-cancel-button {
 	vertical-align: top;
 	position: relative;
 	border: 1px solid var(--input-border-color);
-	background: var(--color-white);
+	background: #fff;
 	min-width: 0;
 	width: 100%;
 	@include button-size(
@@ -805,7 +800,7 @@ body>.jcf-select-drop.jcf-drop-flipped {
 .jcf-list-box {
 	overflow: hidden;
 	display: inline-block;
-	border: 1px solid var(--color-border);
+	border: 1px solid #b8c3c9;
 	min-width: 200px;
 	margin: 0 15px;
 }
@@ -816,7 +811,7 @@ body>.jcf-select-drop.jcf-drop-flipped {
 	display: inline-block;
 	vertical-align: top;
 	position: relative;
-	background: var(--color-white);
+	background: #fff;
 	font-size: 12px;
 	line-height: 1.2;
 	width: 100%;
@@ -853,8 +848,8 @@ body>.jcf-select-drop.jcf-drop-flipped {
 	}
 
 	.jcf-disabled {
-		background: var(--color-white) !important;
-		color: var(--color-caption) !important;
+		background: #fff !important;
+		color: #aaa !important;
 	}
 
 	.jcf-optgroup-caption {
@@ -863,7 +858,7 @@ body>.jcf-select-drop.jcf-drop-flipped {
 		display: block;
 		padding: 5px 9px;
 		cursor: default;
-		color: var(--color-black);
+		color: #000;
 	}
 
 	.jcf-optgroup .jcf-option {
@@ -873,6 +868,6 @@ body>.jcf-select-drop.jcf-drop-flipped {
 
 .jcf-select-drop .jcf-hover,
 .jcf-list-box .jcf-selected {
-	background: var(--color-caption);
-	color: var(--color-black);
+	background: #e6e6e6;
+	color: #000;
 }

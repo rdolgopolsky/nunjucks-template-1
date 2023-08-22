@@ -6,3 +6,4 @@ build
 package-lock.json
 tips.scss
 src/scss/helper
+.idea

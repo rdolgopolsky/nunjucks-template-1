@@ -6,31 +6,27 @@ html {
 	padding: constant(safe-area-inset); //iOS 11
 	padding: env(safe-area-inset); //iOS 11.2+
 
-	@include media("<=desktop-md") {
+	@include media("<=desktop") {
 		font-size: calc(var(--rem-base) - 1.5px);
 	}
 
-	@include media("<=desktop") {
+	@include media("<=tablet") {
 		font-size: calc(var(--rem-base) - 2px);
 	}
 
-	@include media("<=tablet") {
-		font-size: calc(var(--rem-base) - 2.5px);
-	}
-
 	@include media("<=phone") {
-		font-size: calc(var(--rem-base) - 3px);
+		font-size: calc(var(--rem-base) - 2.5px);
 	}
 
 	@include media("<=phone-xs") {
 		overflow-x: hidden;
-		font-size: calc(var(--rem-base) - 3.5px);
+		font-size: calc(var(--rem-base) - 3px);
 	}
 }
 
 //-------------------- #body
 body {
-	color: var(--color-text);
+	color: var(--base-text-color);
 	font: var(--base-font-size)/var(--base-line-height) $base-font;
 	min-width: 320px;
 	-webkit-font-smoothing: antialiased;
@@ -142,7 +138,7 @@ ol.list-style {
 	--line-height-li: var(--base-line-height, 1.2);
 	$margin-li-top: 10px;
 	margin: 0 0 1.2em 0;
-	color: var(--color-text);
+	color: var(--base-text-color);
 
 	li {
 		line-height: var(--line-height-li);
@@ -216,10 +212,10 @@ table {
 
 	th {
 		font-size: var(--base-font-size);
-		color: var(--color-text);
+		color: var(--base-text-color);
 		padding: 10px 15px;
 		text-align: left;
-		border-bottom: 1px solid var(--color-border);
+		border-bottom: 1px solid #979797;
 
 		@include media("<=phone") {
 			padding: 10px 5px;
@@ -232,9 +228,9 @@ table {
 
 	td {
 		font-size: var(--base-font-size);
-		color: var(--color-text);
+		color: var(--base-text-color);
 		padding: 10px 15px;
-		border-bottom: 1px solid var(--color-border);
+		border-bottom: 1px solid #979797;
 
 		@include media("<=phone") {
 			padding: 7px 5px;
@@ -256,9 +252,9 @@ pre {
 //------------------- #blockquote
 blockquote {
 	font-size: 25px;
-	color: var(--color-text);
+	color: var(--base-text-color);
 	background: transparent;
-	border-left: 6px solid var(--color-border);
+	border-left: 6px solid #ECECEC;
 	padding: 5px 0 5px 28px;
 	margin: 0 0 1.2em;
 }
